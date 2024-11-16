@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .password-container, .content-container {
+            display: none;
+        }
+        .password-container.active, .content-container.active {
+            display: block;
+        }
+        .password-container input, .password-container button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        a {
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-container active" id="passwordContainer">
+        <h2>Enter Password to Access the Website</h2>
+        <p>Hint: My Ig password.</p>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    <div class="content-container" id="contentContainer">
+        <h2>Welcome!</h2>
+        <p>Here is the link:</p>
+        <a href="https://www.youtube.com/watch?v=6y9Hj5lubX4" target="_blank">Click here to watch the video</a>
+    </div>
+
+    <script>
+        const correctPassword = "ilykay0404"; // Your password
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput').value;
+            const passwordContainer = document.getElementById('passwordContainer');
+            const contentContainer = document.getElementById('contentContainer');
+
+            if (passwordInput === correctPassword) {
+                passwordContainer.classList.remove('active');
+                contentContainer.classList.add('active');
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
